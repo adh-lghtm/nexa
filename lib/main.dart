@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'page/create_post_page.dart';
+import 'feature/Profile/profile_page.dart';
 
 void main() {
   runApp(const NexaApp());
@@ -208,29 +209,37 @@ class _HomePageState extends State<HomePage> {
 
           const SizedBox(width: 10),
 
-          // Profile
-          Container(
-            width: 42,
-            height: 42,
-            decoration: BoxDecoration(
-              color: const Color(0xFFDCEBC8),
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: Center(
-              child: Text(
-                'IZ',
-                style: TextStyle(
-                  color: primaryGreen,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 13,
-                ),
-              ),
+          // Profile 
+        ElevatedButton(
+          onPressed: () {
+            // Kode navigasi saat tombol ditekan
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ProfilePage()), // Pastikan ProfileScreen sudah di-import
+            );
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xFFDCEBC8), // Mengatur warna background
+            fixedSize: const Size(42, 42), // Mengatur ukuran kotak (lebar, tinggi)
+            padding: EdgeInsets.zero, // Menghilangkan jarak bawaan tombol
+            elevation: 0, // Dibuat 0 agar tidak ada bayangan (seperti Container biasa)
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(14), // Mengatur sudut melengkung
             ),
           ),
-        ],
-      ),
-    );
-  }
+          child: Text(
+            'IZ',
+            style: TextStyle(
+              color: primaryGreen, // Pastikan variabel primaryGreen sudah ada
+              fontWeight: FontWeight.bold,
+              fontSize: 13,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
 
   // ===================================================
   // SEARCH
@@ -647,10 +656,35 @@ class _HomePageState extends State<HomePage> {
               index: 2,
             ),
 
-            _navItem(
-              icon: Icons.person_outline_rounded,
-              label: 'Profil',
-              index: 3,
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProfilePage()),
+                );
+              },
+              child: SizedBox(
+                width: 62,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.person_outline_rounded,
+                      size: 23,
+                      color: currentIndex == 3 ? primaryGreen : secondaryText,
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      'Profil',
+                      style: TextStyle(
+                        color: currentIndex == 3 ? primaryGreen : secondaryText,
+                        fontSize: 9,
+                        fontWeight: currentIndex == 3 ? FontWeight.w700 : FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
