@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sosmed/interaction_page.dart';
+import 'package:sosmed/main.dart';
 
 class CommentPage extends StatelessWidget {
   const CommentPage({super.key});
@@ -50,22 +51,22 @@ class CommentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xFFF8F9F4),
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFFF8F9F4),
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const InteractionPage(),
+                builder: (context) => const NexaApp(),
               ),
             );
           }, 
         ),
-        title: const Text('Post', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+        title: const Text('Post', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
       ),
       body: ListView(
         children: [
@@ -85,7 +86,7 @@ class CommentPage extends StatelessWidget {
                       children: [
                         Text(username,
                             style: const TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                                 fontWeight: FontWeight.bold)),
                         Text(handle,
                             style: const TextStyle(color: Colors.grey)),
@@ -95,7 +96,7 @@ class CommentPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 // Isi postingan
-                Text(content, style: const TextStyle(color: Colors.white, fontSize: 16)),
+                Text(content, style: const TextStyle(color: Colors.black, fontSize: 16)),
                 const SizedBox(height: 12),
                 Text(waktu, style: const TextStyle(color: Colors.grey)),
                 const SizedBox(height: 12),
@@ -119,7 +120,7 @@ class CommentPage extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text('Balasan',
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
           ),
           const SizedBox(height: 12),
           // Looping list komentar dummy
@@ -140,9 +141,9 @@ class CommentPage extends StatelessWidget {
                           children: [
                             Text(k['nama']!,
                                 style: const TextStyle(
-                                    color: Colors.white, fontWeight: FontWeight.bold)),
+                                    color: Colors.black, fontWeight: FontWeight.bold)),
                             Text(k['isi']!,
-                                style: const TextStyle(color: Colors.white70)),
+                                style: const TextStyle(color: Colors.black)),
                             const SizedBox(height: 12),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -168,7 +169,6 @@ class CommentPage extends StatelessWidget {
       // BAGIAN TEXTBOX KOMENTAR
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(10),
-        color: Colors.black,
         child: SafeArea(
           top: false,
           child: 
@@ -187,7 +187,7 @@ class CommentPage extends StatelessWidget {
                     children: [
                       const Expanded(
                         child: TextField(
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                           decoration: InputDecoration(
                             hintText: 'Tulis balasan...',
                             hintStyle: TextStyle(color: Colors.grey),
@@ -200,7 +200,7 @@ class CommentPage extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.all(6),
                           decoration: const BoxDecoration(color: Color(0xFF00BF6C), shape: BoxShape.circle),
-                          child: const Icon(Icons.send, color: Colors.white, size: 16),
+                          child: const Icon(Icons.send, color: Colors.black, size: 16),
                         ),
                       ),
                     ],
@@ -221,7 +221,7 @@ class CommentPage extends StatelessWidget {
       backgroundColor: Color(0xFF00BF6C),
       child: Text(
         nama[0].toUpperCase(),
-        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
       ),
     );
   }
