@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'page/create_post_page.dart';
+import 'comment_page.dart';
+import 'interaction_page.dart';
 
 void main() {
   runApp(const NexaApp());
@@ -89,7 +91,8 @@ class _HomePageState extends State<HomePage> {
       // =========================
       // BODY
       // =========================
-      body: SafeArea(
+      body: currentIndex == 0
+      ? SafeArea(
         child: Column(
           children: [
             Expanded(
@@ -120,7 +123,7 @@ class _HomePageState extends State<HomePage> {
             _buildBottomNavigation(),
           ],
         ),
-      ),
+      ) : const InteractionPage(),
     );
   }
 
@@ -518,25 +521,19 @@ class _HomePageState extends State<HomePage> {
 
                 const SizedBox(width: 18),
 
-                _actionButton(
-  Icons.chat_bubble_outline_rounded,
-  post['comments'],
-  onTap: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => CommentPage(
-          postName: post['name'],
-          postText: post['text'],
-          initial: post['initial'],
-          avatarColor: post['avatarColor'],
-        ),
-      ),
-    );
-  },
-),
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CommentPage(),
+                    ),
+                  );
+                  },
+                  icon: Icon(Icons.chat_bubble_outline_rounded, color: secondaryText),
+                ),
 
-const SizedBox(width: 18),
+                const SizedBox(width: 18),
 
                 _actionButton(Icons.send_outlined, ''),
 
@@ -581,21 +578,10 @@ const SizedBox(width: 18),
   // ACTION BUTTON
   // ===================================================
 
-  Widget _actionButton(
-  IconData icon,
-  String count, {
-  VoidCallback? onTap,
-}) {
-  return GestureDetector(
-    onTap: onTap,
-    behavior: HitTestBehavior.opaque,
-    child: Row(
+  Widget _actionButton(IconData icon, String count) {
+    return Row(
       children: [
-        Icon(
-          icon,
-          size: 21,
-          color: primaryGreen,
-        ),
+        Icon(icon, size: 21, color: primaryGreen),
 
         if (count.isNotEmpty) ...[
           const SizedBox(width: 5),
@@ -610,9 +596,8 @@ const SizedBox(width: 18),
           ),
         ],
       ],
-    ),
-  );
-}
+    );
+  }
 
   // ===================================================
   // BOTTOM NAVIGATION
@@ -667,9 +652,9 @@ const SizedBox(width: 18),
             ),
 
             _navItem(
-              icon: Icons.favorite_border_rounded,
-              label: 'Aktivitas',
-              index: 2,
+            icon: Icons.favorite_border_rounded,
+            label: 'Aktivitas',
+            index: 2,
             ),
 
             _navItem(
