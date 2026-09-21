@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sosmed/comment_page.dart';
+import 'main.dart';
 
 class InteractionPage extends StatelessWidget {
   const InteractionPage({super.key});
@@ -52,25 +53,25 @@ class InteractionPage extends StatelessWidget {
     return DefaultTabController(
       length: 2, 
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFFF8F9F4),
         appBar: AppBar(
-          backgroundColor: Colors.black,
+          backgroundColor: Color(0xFFF8F9F4),
           elevation: 0,
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.white),
+            icon: const Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const CommentPage(),
+                  builder: (context) => const NexaApp(),
                 ),
               );
             }, 
           ),
-          title: const Text('Notifications', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+          title: const Text('Notifications', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
           bottom: const TabBar(
             indicatorColor: Colors.blue,
-            labelColor: Colors.white,
+            labelColor: Colors.black,
             unselectedLabelColor: Colors.grey,
             tabs: [
               Tab(text: 'All'),
@@ -125,23 +126,23 @@ class _DaftarNotifikasi extends StatelessWidget {
                               children: [
                                 TextSpan(
                                   text: n['nama'],
-                                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                                  style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                                 ),
                                 if (n['reply'] != null)
                                   TextSpan(
                                     text: ' ${n['reply']}',
-                                    style: const TextStyle(color: Colors.white),
+                                    style: const TextStyle(color: Colors.black),
                                   ),
                                 TextSpan(
                                   text: ' • ${n['waktu']}',
-                                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                                  style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
                           ),
                           const SizedBox(height: 2),
                           Text(n['keterangan']!,
-                              style: const TextStyle(color: Colors.white70)),
+                              style: const TextStyle(color: Colors.black)),
                           if (n['post'] != null && n['post']!.isNotEmpty) ...[
                             const SizedBox(height: 6),
                             Container(
@@ -179,7 +180,7 @@ class _DaftarNotifikasi extends StatelessWidget {
       backgroundColor: Color(0xFF00BF6C),
       child: Text(
         nama[0].toUpperCase(),
-        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
       ),
     );
   }

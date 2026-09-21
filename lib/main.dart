@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'page/create_post_page.dart';
+<<<<<<< HEAD
 import 'feature/Profile/profile_page.dart';
+=======
+import 'comment_page.dart';
+import 'interaction_page.dart';
+>>>>>>> 9b1ee654b2f054ef2fec011e063ab2e732436d81
 
 void main() {
   runApp(const NexaApp());
@@ -90,7 +95,8 @@ class _HomePageState extends State<HomePage> {
       // =========================
       // BODY
       // =========================
-      body: SafeArea(
+      body: currentIndex == 0
+      ? SafeArea(
         child: Column(
           children: [
             Expanded(
@@ -121,7 +127,7 @@ class _HomePageState extends State<HomePage> {
             _buildBottomNavigation(),
           ],
         ),
-      ),
+      ) : const InteractionPage(),
     );
   }
 
@@ -527,9 +533,16 @@ class _HomePageState extends State<HomePage> {
 
                 const SizedBox(width: 18),
 
-                _actionButton(
-                  Icons.chat_bubble_outline_rounded,
-                  post['comments'],
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CommentPage(),
+                    ),
+                  );
+                  },
+                  icon: Icon(Icons.chat_bubble_outline_rounded, color: secondaryText),
                 ),
 
                 const SizedBox(width: 18),
@@ -651,9 +664,9 @@ class _HomePageState extends State<HomePage> {
             ),
 
             _navItem(
-              icon: Icons.favorite_border_rounded,
-              label: 'Aktivitas',
-              index: 2,
+            icon: Icons.favorite_border_rounded,
+            label: 'Aktivitas',
+            index: 2,
             ),
 
             GestureDetector(
