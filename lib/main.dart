@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'feature/login/login.dart';
+import 'feature/Profile/profile_page.dart';
 
 void main() {
   runApp(const MyApp());
