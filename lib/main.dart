@@ -568,10 +568,21 @@ class _HomePageState extends State<HomePage> {
   // ACTION BUTTON
   // ===================================================
 
-  Widget _actionButton(IconData icon, String count) {
-    return Row(
+  Widget _actionButton(
+  IconData icon,
+  String count, {
+  VoidCallback? onTap,
+}) {
+  return GestureDetector(
+    onTap: onTap,
+    behavior: HitTestBehavior.opaque,
+    child: Row(
       children: [
-        Icon(icon, size: 21, color: primaryGreen),
+        Icon(
+          icon,
+          size: 21,
+          color: primaryGreen,
+        ),
 
         if (count.isNotEmpty) ...[
           const SizedBox(width: 5),
@@ -586,8 +597,9 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ],
-    );
-  }
+    ),
+  );
+}
 
   // ===================================================
   // BOTTOM NAVIGATION
