@@ -519,11 +519,24 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(width: 18),
 
                 _actionButton(
-                  Icons.chat_bubble_outline_rounded,
-                  post['comments'],
-                ),
+  Icons.chat_bubble_outline_rounded,
+  post['comments'],
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CommentPage(
+          postName: post['name'],
+          postText: post['text'],
+          initial: post['initial'],
+          avatarColor: post['avatarColor'],
+        ),
+      ),
+    );
+  },
+),
 
-                const SizedBox(width: 18),
+const SizedBox(width: 18),
 
                 _actionButton(Icons.send_outlined, ''),
 
